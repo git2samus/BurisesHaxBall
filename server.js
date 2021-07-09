@@ -10,7 +10,7 @@ const puppeteer = require('puppeteer');
 
 (async () => {
   // open and config browser
-  const browser = await puppeteer.launch({headless: false});
+  const browser = await puppeteer.launch();
 
   // get default tab
   const [page] = await browser.pages();
