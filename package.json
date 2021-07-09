@@ -1,0 +1,19 @@
+{
+  "name": "burises-haxball",
+  "version": "1.0.0",
+  "description": "Burises HaxBall",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "haxball",
+    "reddit",
+    "burises"
+  ],
+  "author": "git2samus",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^10.1.0"
+  }
+}
