@@ -14,6 +14,7 @@
   "author": "git2samus",
   "license": "ISC",
   "dependencies": {
+    "docopt": "^0.6.2",
     "puppeteer": "^10.1.0"
   }
 }
