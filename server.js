@@ -20,4 +20,11 @@ const puppeteer = require('puppeteer');
 
   // navigate to headless haxball page
   await page.goto('https://html5.haxball.com/headless');
+
+  // load HaxBall script into page (need to wait for the iframe to load)
+  setTimeout(() => fs.readFile('haxball.js', 'utf8', (err, hbScript) => {
+    if (err) throw err;
+
+    page.evaluate(hbScript);
+  }), 1e3);
 })();
