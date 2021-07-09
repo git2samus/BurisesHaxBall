@@ -12,14 +12,17 @@ const puppeteer = require('puppeteer');
   // open and config browser
   const browser = await puppeteer.launch({headless: false});
 
-  // open new tab (there's usually one already but whatevs)
-  const page = await browser.newPage();
+  // get default tab
+  const [page] = await browser.pages();
 
   // hook program close to closing this tab
   page.on('close', () => browser.close());
 
   // navigate to headless haxball page
   await page.goto('https://html5.haxball.com/headless');
+
+  // put recaptcha token on a variable within the browser for the script to read
+  await page.evaluate(`const headlessToken = "${process.argv[2]}"`);
 
   // load HaxBall script into page (need to wait for the iframe to load)
   setTimeout(() => fs.readFile('haxball.js', 'utf8', (err, hbScript) => {
