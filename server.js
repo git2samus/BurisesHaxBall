@@ -28,6 +28,20 @@ const puppeteer = require('puppeteer');
   setTimeout(() => fs.readFile('haxball.js', 'utf8', (err, hbScript) => {
     if (err) throw err;
 
-    page.evaluate(hbScript);
+    page.evaluate(hbScript).then(() => {
+      // identify frame
+      const iframe = page.frames().find(
+        frame => frame.parentFrame() !== null
+      );
+
+      // look for room url within frame
+      iframe.waitForSelector('#roomlink a').then(
+        eh => eh.getProperty('href')
+      ).then(
+        jsh => jsh.jsonValue()
+      ).then(
+        href => console.log(href)
+      );
+    });
   }), 1e3);
 })();
