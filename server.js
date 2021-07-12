@@ -10,28 +10,34 @@ const {docopt} = require('docopt');
  */
 
 const doc = `Usage:
-  server.js <name> <token> [--debug]
-  server.js --gui <name> [<token>] [--debug]
+  server.js <name> <token> [options] [--debug]
+  server.js --gui <name> [<token>] [options] [--debug]
   server.js --version
 
 Arguments:
-  <name>        HaxBall room name
-  <token>       Headless token obtained from https://www.haxball.com/headlesstoken
+  <name>            HaxBall room name
+  <token>           Headless token obtained from https://www.haxball.com/headlesstoken
 
 Options:
-  --gui         Show the browser window
-  --debug       Enable debug messages
-  --version     Show script version
+  -p --players=<p>  Max players
+  -t --time=<t>     Time limit
+  -s --score=<s>    Score limit
+  --public          Make room public
+  --gui             Show the browser window
+  --debug           Enable debug messages
+  --version         Show script version
+  -h --help         Show this message
 `;
 
 (async () => {
+  // utility to print debug messages to stderr
+  const logger = msg => { if (debug) console.error(msg) };
+
   // parse arguments
   const args = docopt(doc, {version: '1.0.0'});
   const debug = args['--debug'];
 
-  // utility to print debug messages to stderr
-  const logger = msg => { if (debug) console.error(msg) };
-  logger(args);
+  logger({args: args});
 
   // open and config browser
   const browser = await puppeteer.launch({headless: !args['--gui']});
@@ -47,9 +53,16 @@ Options:
 
   // put haxball arguments on a variable within the browser for the script to read
   const roomArgs = {
-    name: args['<name>'],
+    roomName: args['<name>'],
+    public: args['--public'],
     token: args['<token>'],
   };
+  if (args['--players']) roomArgs['maxPlayers'] = parseInt(args['--players']);
+  if (args['--score']) roomArgs['scoreLimit'] = parseInt(args['--score']);
+  if (args['--time']) roomArgs['timeLimit'] = parseInt(args['--time']);
+
+  logger({roomArgs: roomArgs});
+
   await page.evaluate(`const roomArgs = ${JSON.stringify(roomArgs)};`);
 
   // load HaxBall script into page (need to wait for the iframe to load)

@@ -5,8 +5,6 @@
  * The function HBInit() creates the HaxBall room
  */
 
-HBInit(roomArgs);
-
 // If there are no admins left in the room give admin to one of the remaining players.
 const updateAdmins = () => {
   // Get all players
@@ -15,11 +13,24 @@ const updateAdmins = () => {
   // No players left, do nothing.
   if (players.length == 0) return;
   // There's an admin left so do nothing.
-  if (players.find((player) => player.admin) != null ) return;
+  if (players.find((player) => player.admin) != null) return;
 
   // Give admin to the first non admin player in the list
   room.setPlayerAdmin(players[0].id, true);
 }
+
+// create HaxBall room
+const room = HBInit({
+  roomName: roomArgs['roomName'],
+  public: roomArgs['public'],
+  token: roomArgs['token'],
+  maxPlayers: roomArgs['maxPlayers'],
+  noPlayer: true // Remove host player (recommended!)
+});
+
+// additional config
+room.setScoreLimit(roomArgs['scoreLimit']);
+room.setTimeLimit(roomArgs['timeLimit']);
 
 // hooks
 room.onPlayerJoin = updateAdmins;
