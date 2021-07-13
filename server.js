@@ -22,6 +22,7 @@ Options:
   -p --players=<p>  Max players
   -t --time=<t>     Time limit
   -s --score=<s>    Score limit
+  -m --map=<m>      HaxBall stadium map file
   --public          Make room public
   --gui             Show the browser window
   --debug           Enable debug messages
@@ -56,10 +57,11 @@ Options:
     roomName: args['<name>'],
     public: args['--public'],
     token: args['<token>'],
+    maxPlayers: (args['--players'])? parseInt(args['--players']) : null,
+    scoreLimit: (args['--score'])? parseInt(args['--score']) : null,
+    timeLimit: (args['--time'])? parseInt(args['--time']) : null,
+    stadiumFileText: (args['--map'])? fs.readFileSync(args['--map'], 'utf8') : null,
   };
-  if (args['--players']) roomArgs['maxPlayers'] = parseInt(args['--players']);
-  if (args['--score']) roomArgs['scoreLimit'] = parseInt(args['--score']);
-  if (args['--time']) roomArgs['timeLimit'] = parseInt(args['--time']);
 
   logger({roomArgs: roomArgs});
 

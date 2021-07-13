@@ -29,8 +29,9 @@ const room = HBInit({
 });
 
 // additional config
-room.setScoreLimit(roomArgs['scoreLimit']);
-room.setTimeLimit(roomArgs['timeLimit']);
+if (roomArgs['scoreLimit'] !== null) room.setScoreLimit(roomArgs['scoreLimit']);
+if (roomArgs['timeLimit'] !== null) room.setTimeLimit(roomArgs['timeLimit']);
+if (roomArgs['stadiumFileText'] !== null) room.setCustomStadium(roomArgs['stadiumFileText']);
 
 // hooks
 room.onPlayerJoin = updateAdmins;
