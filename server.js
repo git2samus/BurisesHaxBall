@@ -12,6 +12,7 @@ const {docopt} = require('docopt');
 const doc = `Usage:
   server.js <name> <token> [options] [--debug]
   server.js --gui <name> [<token>] [options] [--debug]
+  server.js --diagnostics
   server.js --version
 
 Arguments:
@@ -26,6 +27,7 @@ Options:
   --public          Make room public
   --gui             Show the browser window
   --debug           Enable debug messages
+  --diagnostics     Load https://www.haxball.com/webrtcdiagnostics print and exit
   --version         Show script version
   -h --help         Show this message
 `;
@@ -49,42 +51,54 @@ Options:
   // hook program close to closing this tab
   page.on('close', () => browser.close());
 
-  // navigate to headless haxball page
-  await page.goto('https://html5.haxball.com/headless');
+  if (args['--diagnostics']) {
+    // navigate to diagnostics page
+    await page.goto('https://www.haxball.com/webrtcdiagnostics');
 
-  // put haxball arguments on a variable within the browser for the script to read
-  const roomArgs = {
-    roomName: args['<name>'],
-    public: args['--public'],
-    token: args['<token>'],
-    maxPlayers: (args['--players'])? parseInt(args['--players']) : null,
-    scoreLimit: (args['--score'])? parseInt(args['--score']) : null,
-    timeLimit: (args['--time'])? parseInt(args['--time']) : null,
-    stadiumFileText: (args['--map'])? fs.readFileSync(args['--map'], 'utf8') : null,
+    // wait for diagnostic to run
+    setTimeout(() => {
+      page.evaluate('document.querySelector(".page script").remove(); document.querySelector(".page").textContent;')
+        .then((content) => console.log(content))
+        .then(() => page.close());
+    }, 1e3);
+  } else {
+    // navigate to headless haxball page
+    await page.goto('https://html5.haxball.com/headless');
+
+    // put haxball arguments on a variable within the browser for the script to read
+    const roomArgs = {
+      roomName: args['<name>'],
+      public: args['--public'],
+      token: args['<token>'],
+      maxPlayers: (args['--players'])? parseInt(args['--players']) : null,
+      scoreLimit: (args['--score'])? parseInt(args['--score']) : null,
+      timeLimit: (args['--time'])? parseInt(args['--time']) : null,
+      stadiumFileText: (args['--map'])? fs.readFileSync(args['--map'], 'utf8') : null,
+    };
+
+    logger({roomArgs: roomArgs});
+
+    await page.evaluate(`const roomArgs = ${JSON.stringify(roomArgs)};`);
+
+    // load HaxBall script into page (need to wait for the iframe to load)
+    setTimeout(() => fs.readFile('haxball.js', 'utf8', (err, hbScript) => {
+      if (err) throw err;
+
+      page.evaluate(hbScript).then(() => {
+        // identify frame
+        const iframe = page.frames().find(
+          frame => frame.parentFrame() !== null
+        );
+
+        // look for room url within frame
+        iframe.waitForSelector('#roomlink a').then(
+          eh => eh.getProperty('href')
+        ).then(
+          jsh => jsh.jsonValue()
+        ).then(
+          href => console.log(href)
+        );
+      });
+    }), 1e3);
   };
-
-  logger({roomArgs: roomArgs});
-
-  await page.evaluate(`const roomArgs = ${JSON.stringify(roomArgs)};`);
-
-  // load HaxBall script into page (need to wait for the iframe to load)
-  setTimeout(() => fs.readFile('haxball.js', 'utf8', (err, hbScript) => {
-    if (err) throw err;
-
-    page.evaluate(hbScript).then(() => {
-      // identify frame
-      const iframe = page.frames().find(
-        frame => frame.parentFrame() !== null
-      );
-
-      // look for room url within frame
-      iframe.waitForSelector('#roomlink a').then(
-        eh => eh.getProperty('href')
-      ).then(
-        jsh => jsh.jsonValue()
-      ).then(
-        href => console.log(href)
-      );
-    });
-  }), 1e3);
 })();
