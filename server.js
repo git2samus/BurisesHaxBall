@@ -48,6 +48,9 @@ Options:
   // get default tab
   const [page] = await browser.pages();
 
+  // disable timeout on selectors
+  page.setDefaultTimeout(0);
+
   // hook program close to closing this tab
   page.on('close', () => browser.close());
 
