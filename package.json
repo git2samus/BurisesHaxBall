@@ -14,6 +14,7 @@
   "author": "git2samus",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.23.0",
     "docopt": "^0.6.2",
     "puppeteer": "^10.1.0"
   }
