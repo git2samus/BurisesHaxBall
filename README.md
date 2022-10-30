@@ -25,6 +25,6 @@ r/Burises HaxBall server
 
 Al levantar el server nos muestra una URL para entrar a la sala, el proceso queda corriendo.
 
-Para desconectarse sin interrumpir la partida hay que pasar la sesión de screen a segundo plano apretando `Ctrl-a` y después `d` luego podemos cerrar la conexión SSH.
+Para desconectarse sin interrumpir la partida hay que pasar la sesión de screen a segundo plano apretando ***Ctrl-a*** y después ***d*** luego podemos cerrar la conexión SSH.
 
-Para volver la sesión de screen a primer plano y parar el servidor ejecutamos `screen -r` y luego apretamos `Ctrl-d`.
+Para volver la sesión de screen a primer plano y parar el servidor ejecutamos `screen -r` y luego apretamos ***Ctrl-d***.
