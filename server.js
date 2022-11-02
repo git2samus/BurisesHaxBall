@@ -70,7 +70,10 @@ const runHaxball = async (page, roomArgs) => {
         (jsh) => jsh.jsonValue()
       ).then(
         (roomUrl) => {
-          console.log(roomUrl)
+          console.log(roomUrl);
+
+          // save room URL to file for redirect server
+          fs.writeFileSync('room.url', roomUrl);
         }
       );
     });
@@ -80,14 +83,12 @@ const runHaxball = async (page, roomArgs) => {
 // main //
 
 (async () => {
-  // utility to print debug messages to stderr
-  const logger = msg => { if (debug) console.error(msg) };
-
   // parse arguments
   const cliArgs = docopt(doc, { version: '1.1.0' });
   const debug = cliArgs['--debug'];
 
-  logger({ cliArgs: cliArgs });
+  if (debug)
+    console.error({ cliArgs: cliArgs });
 
   // open and config browser
   const browser = await puppeteer.launch({ headless: !cliArgs['--gui'] });
@@ -115,7 +116,8 @@ const runHaxball = async (page, roomArgs) => {
       stadiumFileText: (cliArgs['--map'])? fs.readFileSync(cliArgs['--map'], 'utf8') : null,
     };
 
-    logger({ roomArgs: roomArgs });
+    if (debug)
+      console.error({ roomArgs: roomArgs });
 
     await runHaxball(page, roomArgs);
   };
