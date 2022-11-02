@@ -12,13 +12,14 @@ const { S3 } = require('@aws-sdk/client-s3');
 
 // docopt cli program
 const doc = `Usage:
-  server.js <roomName> <token> [options] [--debug]
-  server.js --gui <roomName> [<token>] [options] [--debug]
+  server.js <roomName> <adminPassword> <token> [options] [--debug]
+  server.js --gui <roomName> <adminPassword> [<token>] [options] [--debug]
   server.js --diagnostics
   server.js --version
 
 Arguments:
   <roomName>            HaxBall room name
+  <adminPassword>       In-game admin password
   <token>               Headless token obtained from https://www.haxball.com/headlesstoken
 
 Options:
@@ -53,7 +54,7 @@ const index_html = (url) => `<!DOCTYPE html>
   const logger = msg => { if (debug) console.error(msg) };
 
   // parse arguments
-  const cliArgs = docopt(doc, { version: '1.0.0' });
+  const cliArgs = docopt(doc, { version: '1.1.0' });
   const debug = cliArgs['--debug'];
 
   logger({ cliArgs: cliArgs });
@@ -87,6 +88,7 @@ const index_html = (url) => `<!DOCTYPE html>
     // put haxball arguments on a variable within the browser for the script to read
     const roomArgs = {
       roomName: cliArgs['<roomName>'],
+      adminPassword: cliArgs['<adminPassword>'],
       public: cliArgs['--public'],
       token: cliArgs['<token>'],
       maxPlayers: (cliArgs['--players'])? parseInt(cliArgs['--players']) : null,

@@ -11,7 +11,7 @@ r/Burises HaxBall server
    - Zone: (cualquiera de las habilitadas para esa region)
    - Machine family: General purpose
    - Series: E2
-   - Machine type: e2-micro
+   - Machine type: e2-small
    - Firewall: Clickear "Allow HTTP traffic" y "Allow HTTPS traffic"
 3. Conectarse por SSH (instrucciones: https://cloud.google.com/compute/docs/instances/connecting-advanced#thirdpartytools)
    1. Comando para conectarse: `gcloud compute ssh <nombre-de-la-vm> --zone=<zona-de-la-vm>`
@@ -20,7 +20,7 @@ r/Burises HaxBall server
    4. Instalar [nvm](https://github.com/nvm-sh/nvm) `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash`
    5. Iniciar una sesión de [screen](https://www.gnu.org/software/screen/): `screen`
    6. Instalar [Node.js](https://nodejs.org/) y dependencias de Javascript: `nvm install node && nvm use node && npm install`
-   7. Levantar el server: `node server.js <nombre-de-la-sala> <token-del-captcha>`
+   7. Levantar el server: `node server.js <nombre-de-la-sala> <password-de-admin> <token-del-captcha>`
       - El token se consigue acá: https://www.haxball.com/headlesstoken
 
 Al levantar el server nos muestra una URL para entrar a la sala, el proceso queda corriendo.
