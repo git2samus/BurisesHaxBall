@@ -8,7 +8,7 @@ const roomName = "🏆 Futsal x3 | r/Burises 🏆";
 const botName = "CarpinchoBot";
 const maxPlayers = 30;
 const roomPublic = true;
-const geo = [{ "code": "ni", "lat": -34.6, "lon": -58.4 }];
+const geo = [{ "code": "uy", "lat": -34.6, "lon": -58.4 }];
 
 const room = HBInit({ token: roomArgs['token'], roomName: roomName, maxPlayers: maxPlayers, public: roomPublic, playerName: botName, geo: geo[0] });
 
