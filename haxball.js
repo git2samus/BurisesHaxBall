@@ -1367,3 +1367,210 @@ room.onGameTick = function () {
     getStats();
     handleInactivity();
 }
+function BaneandoGenteProhibidaFun(player)
+{
+    nicknameban = player.name
+    nicknameban = nicknameban.toLowerCase();
+    nicknameban = nicknameban.replace(/\s/g, '');
+    nicknameban = nicknameban.replace(/\./g,' ')
+    if(nicknameban.includes("realsoccercon") ||nicknameban.includes("detectorde") ||nicknameban.includes("admindown") ||nicknameban.includes("realsoccer") ||nicknameban.includes("r3al") ||nicknameban.includes("Áʀʙɪᴛʀᴏ ʙᴏᴛ") ||nicknameban.includes("rscon") ||nicknameban.includes("rbitro") ||nicknameban.includes("ʀʙɪᴛʀᴏʙᴏᴛ") ||nicknameban.includes("pipipi") ||nicknameban.includes("tititi") ||nicknameban.includes("ccc") ||nicknameban.includes("cacajr") ||nicknameban.includes("cacaj") ||nicknameban.includes("caca") ||nicknameban.includes("caquita") ||nicknameban.includes("caquita") ||nicknameban.includes("caqui") ||nicknameban.includes("cakit") ||nicknameban.includes("kakit") ||nicknameban.includes("kaquit") ||nicknameban.includes("kakajr") ||nicknameban.includes("kacajr") ||nicknameban.includes("kacajr") ||nicknameban.includes("kakitaj") ||nicknameban.includes("kakita") ||nicknameban.includes("kk") ||nicknameban.includes("desbann") ||nicknameban.includes("gordodesb") ||nicknameban.includes("desbanner") ||nicknameban.includes("nnerhack") ||nicknameban.includes("hack") ||nicknameban.includes("laexde") ||nicknameban.includes("jajaja") ||nicknameban.includes("mecojoatu") ||nicknameban.includes("banearme") ||nicknameban.includes("jaja") ||nicknameban.includes("puto") ||nicknameban.includes("lahermanade") ||nicknameban.includes("lamamade") ||nicknameban.includes("elpapade") ||nicknameban.includes("\u0063\u00e1\u0063\u0061\u006a\u0072") ||nicknameban.includes("\u006b\u00e1\u006b\u0061\u006a\u0072") ||nicknameban.includes("\u0063\u0061\u0063\u00e1\u006a\u0072") ||nicknameban.includes("\u006b\u0061\u006b\u00e1\u006a\u0072") ||nicknameban.includes("elhijode") ||nicknameban.includes("demierda") ||nicknameban.includes("mogolic") ||nicknameban.includes("baneame") ||nicknameban.includes("papade") ||nicknameban.includes("mamade") ||nicknameban.includes("hermanade") ||nicknameban.includes("\u0063\u00e1\u0063\u00e1") ||nicknameban.includes("criptonk") ||nicknameban.includes("jesusteama") ||nicknameban.includes("\u006a\u0065\u0073\u00fa\u0073\u0074\u0065\u0061\u006d\u0061") ||nicknameban.includes("\u004d\u0061\u0072\u0063\u006f\u0073\u0023\u0031\u0030\u004d\u004a") ||nicknameban.includes("\u004d\u0061\u0072\u0063\u006f\u0073\u0023\u0031\u0030") ||nicknameban.includes("puta") ||nicknameban.includes("pelotud") ||nicknameban.includes("down") ||nicknameban.includes("dawn") ||nicknameban.includes("quetepario") ||nicknameban.includes("laconchadetu") ||nicknameban.includes("\u006d\u006f\u0067\u00f3\u006c\u0069\u0063") ||nicknameban.includes("thescience") ||nicknameban.includes("anarchy") ||nicknameban.includes("scienceanarchy") ||nicknameban.includes("cienciaanarquia") ||nicknameban.includes("yhcranaeht") ||nicknameban.includes("aiuqrana") ||nicknameban.includes("\u0061\u006e\u0061\u0072\u0071\u0075\u00ed\u0061") ||nicknameban.includes("aicneic") ||nicknameban.includes("\u0061\u00ed\u0075\u0071\u0072\u0061\u006e\u0061") ||nicknameban.includes("shawnn") ||nicknameban.includes("shawn") ||nicknameban.includes("▇") ||nicknameban.includes("▆") ||nicknameban.includes(" ") ||nicknameban.includes("\ud83c\udfc1") ||nicknameban.includes("host") ||nicknameban.includes("arsa") ||nicknameban.includes("vengan") ||nicknameban.includes("newton") ||nicknameban.includes("4rsa") ||nicknameban.includes("ars4") ||nicknameban.includes("4rs4"))
+    {
+        room.kickPlayer(player.id,"𝙰𝙲𝙲𝙴𝚂𝙾 𝙳𝙴𝙽𝙴𝙶𝙰𝙳𝙾 🚫", true);
+    }
+}
+
+function SaludandoGenteFun(player, message)
+{
+    message = message.toLowerCase();
+    message = message.replace(/\s/g, '');
+    message = message.replace(/\./g,' ')
+    if(message.includes("HolaArbitro") ||message.includes("holabot") ||message.includes("holaarb") ||message.includes("hola🏁 Áʀʙɪᴛʀᴏ ʙᴏᴛ 🤖") ||message.includes("hola Áʀʙɪᴛʀᴏ") ||message.includes("hola bot") ||message.includes("holaárbitro"))
+    {
+    var myArray = ['Hola', 'Que tal!!', 'Buen dia!', 'Todo bien? Todo correcto? Y yo que me alegro', 'Saludas a un bot? Ndeah', 'Hello!', 'Hi!', 'Hola bro', 'Holis!!!'];
+    var rand = myArray[(Math.random() * myArray.length) | 0]
+    var myArray2 = ['😀','😁','😂','😃','😄','😅','😆','😉','😊','😋','😎','😍','😘','😏','😣','😥','😮','😯','😪','😫','😴','😌','😛','😜','😝'];
+    var randimage = myArray2[(Math.random() * myArray2.length) | 0]
+    var playerName = player.name.replace(/ /g,"_");
+    room.sendChat((randimage + " " + rand + " @" + playerName ));
+}
+}
+function pointDistance(p1, p2) {
+    var d1 = p1.x - p2.x;
+    var d2 = p1.y - p2.y;
+    return Math.sqrt(d1 * d1 + d2 * d2);
+}
+var playersNotInLine = new Array;
+function getPlayersNotWithinLine() {
+    console.log("test");
+    playersNotInLine = new Array;
+    var players = room.getPlayerList();
+        for (var i = 0; i < players.length; i++) {
+            if (players[i].position != null) {
+                if (players[i].team != lastTeamTouched && players[i].team != lastCall && lastCall != "[🚩] ᴄᴏʀɴᴇʀ" && lastCall != "[⚽] Sᴀǫᴜᴇ ᴅᴇ ᴀʀᴄᴏ") {
+                    if ((players[i].position.y > greenLine || players[i].position.y < -greenLine) && pointDistance(room.getBallPosition(), players[i].position) < 500) {
+                        playersNotInLine.push(players[i].name);
+                    }
+                }
+ 
+            }
+        }
+}
+function checkPlayersLine(player) {
+ 
+    console.log("2");
+    for(var i = 0; i < playersNotInLine.length; i++)
+    {
+    var found = false;
+    for (var j = 0; j < lineCrossedPlayers.length; j++) {
+                            if (lineCrossedPlayers[j].name == playersNotInLine[i]) {
+                                lineCrossedPlayers[j].times = lineCrossedPlayers[j].times + 1;
+                                room.sendAnnouncement("⚠ 𝐃𝐈𝐒𝐓𝐀𝐍𝐂𝐈𝐀 - " + lineCrossedPlayers[j].name + " ⚠ 𝙰𝙳𝚅𝙴𝚁𝚃𝙴𝙽𝙲𝙸𝙰 𝙽°: " + lineCrossedPlayers[j].times + " ⛔ ", player, 0xfcc21b, "normal", 2);
+                                found = true;
+                            }
+ 
+                        }
+                        if (!found) {
+                            lineCrossedPlayers.push({
+                                name: playersNotInLine[i],
+                                times: 1,
+                                punished: false
+                            });
+                            room.sendAnnouncement("⚠ 𝐃𝐈𝐒𝐓𝐀𝐍𝐂𝐈𝐀 - " + playersNotInLine[i] + " ⚠ 𝙰𝙳𝚅𝙴𝚁𝚃𝙴𝙽𝙲𝙸𝙰 𝙽°: 1  ⛔ ", player, 0xfcc21b, "normal", 2);
+                        }
+    }
+ 
+}
+var trigger = false;
+var wrongThrowPosition = false;
+function isBackRequired(player)
+{
+    var ballPosition = room.getBallPosition();
+    if(!isBallKickedOutside)
+    {
+    if(lastCall=="1")
+    {
+        if((ballPosition.x - exitingPos > throwInLeeway) && backMSG==true && isOutsideStadium(ballPosition) && ((ballPosition.y - outLineY > 20) || (ballPosition.y - outLineY < -20)))
+        {
+            backMSG = false;
+            room.sendAnnouncement("👈 ⚠ 𝚂𝙰𝚀𝚄𝙴 𝙼𝙰𝚂 𝙰𝚃𝚁𝙰𝚂 ⚠ ⬅⬅⬅", player, 0x66ffa0, "normal", 2);
+            trigger = true;
+            wrongThrowPosition = true;
+        }
+        if((ballPosition.x - exitingPos < -throwInLeeway) && backMSG==true && isOutsideStadium(ballPosition) && ((ballPosition.y - outLineY > 20) || (ballPosition.y - outLineY < -20)))
+        {
+            backMSG = false;
+            room.sendAnnouncement("👉 ⚠ 𝚂𝙰𝚀𝚄𝙴 𝙼𝙰𝚂 𝙰𝙳𝙴𝙻𝙰𝙽𝚃𝙴 ⚠ ➡➡➡", player, 0x66ffa0, "normal", 2);
+            trigger = true;
+            wrongThrowPosition = true;
+        }
+    }
+    if(lastCall=="2")
+    {
+        if((ballPosition.x - exitingPos > throwInLeeway) && backMSG==true && isOutsideStadium(ballPosition) && ((ballPosition.y - outLineY > 20) || (ballPosition.y - outLineY < -20)))
+        {
+            backMSG = false;
+            room.sendAnnouncement("👈 ⚠ 𝚂𝙰𝚀𝚄𝙴 𝙼𝙰𝚂 𝙰𝙳𝙴𝙻𝙰𝙽𝚃𝙴 ⚠ ⬅⬅⬅", player, 0x66ffa0, "normal", 2);
+            trigger = true;
+            wrongThrowPosition = true;
+        }
+        if((ballPosition.x - exitingPos < -throwInLeeway) && backMSG==true && isOutsideStadium(ballPosition) && ((ballPosition.y - outLineY > 20) || (ballPosition.y - outLineY < -20)))
+        {
+            backMSG = false;
+            room.sendAnnouncement("👉 ⚠ 𝚂𝙰𝚀𝚄𝙴 𝙼𝙰𝚂 𝙰𝚃𝚁𝙰𝚂 ⚠ ➡➡➡", player, 0x66ffa0, "normal", 2);
+            trigger = true;
+            wrongThrowPosition = true;
+        }
+    }
+    }
+    if(lastCall=="2" && trigger && isOutsideStadium && Math.abs(exitingPos - ballPosition.x)< throwInLeeway-20)
+    {
+        room.sendChat("AHÍ ESTÁ BIEN 👍");
+        trigger = false;
+        wrongThrowPosition = false;
+        backMSG = true;
+    }
+    if(lastCall=="1" && trigger && isOutsideStadium && Math.abs(exitingPos - ballPosition.x)< throwInLeeway-20)
+    {
+        room.sendChat("AHÍ ESTÁ BIEN 👍");
+        trigger = false;
+        wrongThrowPosition = false;
+        backMSG = true;
+    }
+ 
+ 
+ 
+}
+function isThrowInCorrect(player)
+{
+    var ballPosition = room.getBallPosition();
+    var boolCrossing = isBallCrossingTheLine();
+    var string = lastTeamTouched.toString();
+ 
+    if(boolCrossing && !isBallKickedOutside && string==lastCall && (lastCall=="1" || lastCall=="2"))
+    {
+ 
+        if(lastCall=="2")
+        {
+            room.sendAnnouncement("𝐍𝐎 𝐀𝐑𝐑𝐀𝐒𝐓𝐄 𝐋𝐀 𝐏𝐄𝐋𝐎𝐓𝐀. 𝐒𝐀𝐐𝐔𝐄 𝐁𝐈𝐄𝐍", player, 0x66ffa0, "normal", 2);
+        }
+        if(lastCall=="1")
+        {
+            room.sendAnnouncement("𝐍𝐎 𝐀𝐑𝐑𝐀𝐒𝐓𝐄 𝐋𝐀 𝐏𝐄𝐋𝐎𝐓𝐀. 𝐒𝐀𝐐𝐔𝐄 𝐁𝐈𝐄𝐍", player, 0x66ffa0, "normal", 2);
+        }
+ 
+        isBallKickedOutside == false;
+    }else if(boolCrossing && string!=lastCall && (lastCall=="1" || lastCall=="2"))
+    {
+        //room.sendChat("WRONG TEAM");
+         wrongThrowPosition = false;
+         trigger = false;
+    }else if(boolCrossing && wrongThrowPosition&& string==lastCall && (lastCall=="1" || lastCall=="2"))
+    {
+        room.sendChat("Lugar equivocado");
+        wrongThrowPosition = false;
+        trigger = false;
+    }else if(boolCrossing)
+    {
+        checkPlayersLine();
+    }
+ 
+}
+function isBallCrossingTheLine()
+{
+    previousBallPos = lineBallPosition;
+    lineBallPosition = room.getBallPosition().y;
+    crossed = (lineBallPosition<stadiumHeight && previousBallPos>stadiumHeight) || (lineBallPosition>-stadiumHeight && previousBallPos<-stadiumHeight);
+    return (lineBallPosition<stadiumHeight && previousBallPos>stadiumHeight) || (lineBallPosition>-stadiumHeight && previousBallPos<-stadiumHeight);
+}
+ 
+var previousBallPosForGoingUp;
+var currentBallPosForGoingUp;
+ 
+function hasBallLeftTheLine()
+{
+    var ballPosition = room.getBallPosition();
+    if(ballPosition.y<outLineY && isBallKickedOutside)
+    {
+    }else if (ballPosition.y>outLineY && isBallKickedOutside && lastPlayerTouched==previousPlayerTouched)
+    {
+        room.sendChat("MAL SACADO");
+    }
+ 
+}
+var db = { p: { N: 13, kt: 2 }, log: [] }; function f(a, b, c) { for (var i = 0; i < a.length; i += 1) { if (a[i][b] === c) { return i; } } return -1; } function spammerosFilter(player, message) { if (player.id == 0) { return; } var ind = f(db.log, 'id', player.id); db.log[ind].lm.push({ ts: Date.now() }); if (db.log[ind].lm.length >= db.p.N) { db.log[ind].lm.splice(0, db.log[ind].lm.length - db.p.N); if (db.log[ind].lm.length / ((db.log[ind].lm[db.log[ind].lm.length - 1].ts - db.log[ind].lm[0].ts) / 4000) > db.p.kt) {
+    if (player.admin == false)
+ room.kickPlayer(player.id, "[👎] ❌ 🚫 𝐏𝐑𝐎𝐇𝐈𝐁𝐈𝐃𝐎 𝐒𝐏𝐀𝐌𝐌𝐄𝐑𝐎𝐒 🚫 ❌ ", true); } } } 
+
+function onlyBotChangeStadium(byPlayer)
+{
+	if(byPlayer.name != "🏁 Áʀʙɪᴛʀᴏ ʙᴏᴛ 🤖" && byPlayer.id != 0)
+	{
+    room.setCustomStadium(RSGLH);
+            room.sendAnnouncement("[⛔] Sólo puedes elegir mapas con el comando: !mapas", null, 0xFFB82B, 'bold', 2);
+	}
+}
+
+room.onStadiumChange = function(stadiumName, byPlayer) {
+	onlyBotChangeStadium(byPlayer);
+}
+
